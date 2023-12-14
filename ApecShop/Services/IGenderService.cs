@@ -1,4 +1,5 @@
 ﻿using ApecShop.Data.DTOs;
+using ApecShop.Data.Models;
 
 namespace ApecShop.Services
 {
@@ -6,9 +7,12 @@ namespace ApecShop.Services
     {
         Task<List<GenderSelect>> GetGenderSelect();
 
-        Task<GenderDetail?> GetGender(int GenderId);
+        Task<GenderDetail?> GetGender(int GenderID);
 
-
+        void Add(GenderDetail genderDetail);
+        void Update(GenderDetail genderDetail);
+        void Delete(Gender gender);
+        void Delete(int GenderID);
 
     }
 }
