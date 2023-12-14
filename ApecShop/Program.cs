@@ -2,6 +2,7 @@ using ApecShop.Client.Pages;
 using ApecShop.Components;
 using ApecShop.Components.Account;
 using ApecShop.Data;
+using ApecShop.Services;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -42,6 +43,7 @@ namespace ApecShop
                 .AddDefaultTokenProviders();
 
             builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+            builder.Services.AddTransient<UnitOfWork>();
 
             var app = builder.Build();
 

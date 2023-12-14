@@ -6,12 +6,14 @@ namespace ApecShop.Services
     {
         private readonly ApplicationDbContext dbc;
 
-        private IGenderService? _genderService;
+        private GenderService _genderService = null!;
 
         public UnitOfWork(ApplicationDbContext context)
         {
            dbc = context;
         }
+
+        public GenderService GenderService => _genderService ??= new GenderService(dbc);
 
         private async Task<int> Commit() { 
             return await dbc.SaveChangesAsync();  

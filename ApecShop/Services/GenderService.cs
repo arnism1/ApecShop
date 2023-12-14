@@ -1,6 +1,7 @@
 ﻿using ApecShop.Data;
 using ApecShop.Data.DTOs;
 using ApecShop.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApecShop.Services
 {
@@ -33,9 +34,16 @@ namespace ApecShop.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<GenderSelect>> GetGenderSelect()
+        public async Task<List<GenderSelect>> GetGenderSelect()
         {
-            throw new NotImplementedException();
+            var genders = from g in dbc.Genders
+                          orderby g.Title
+                          select new GenderSelect
+                          {
+                              GenderID = g.GenderID,
+                              Title = g.Title
+                          };
+            return await genders.ToListAsync();
         }
 
         public void Update(GenderDetail genderDetail)

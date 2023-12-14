@@ -1,0 +1,25 @@
+﻿@page "/genders"
+@using ApecShop.Data.DTOs
+
+@rendermode InteractiveAuto
+@inject UnitOfWork uow;
+
+<h3>Genders</h3>
+
+@if (genders == null)
+{
+    <p> ...loading</p>
+} else
+{
+    
+}
+
+@code {
+    List<GenderSelect>? genders;
+
+    protected override async Task OnInitializedAsync()
+    {
+        genders = await uow.GenderService.GetGenderSelect();
+    }
+
+}

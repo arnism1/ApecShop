@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApecShop", "ApecShop\ApecShop.csproj", "{6C77C127-D3AB-4B76-9C80-E6A3071BF990}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApecShop", "ApecShop\ApecShop.csproj", "{6C77C127-D3AB-4B76-9C80-E6A3071BF990}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApecShop.Client", "ApecShop.Client\ApecShop.Client.csproj", "{43EC53AF-E20D-4CF5-8921-D479F400747E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApecShop.Client", "ApecShop.Client\ApecShop.Client.csproj", "{43EC53AF-E20D-4CF5-8921-D479F400747E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
