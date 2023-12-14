@@ -1,0 +1,80 @@
+﻿@page "/genders/edit{id: int}"
+@page "/genders/edit"
+@using ApecShop.Data.DTOs
+
+<h3>EditCreate</h3>
+@inject UnitOfWork uow;
+
+<h3>@title </h3>
+
+@if(gender != null)
+{
+    <EditForm Model="@gender"OnValidSubmit="Onsave"> 
+        <DataAnnotationsValidator />
+       
+        <div  class="col-md-12 mb-3">
+            <label for="Title">
+                GenderName
+            </label>
+            <InputText id="title" @bind-Value ="gender.Title" class="form-control"/>
+            <ValidationMessage For="@(()=> gender.Title)" />
+        </div>
+
+        <div class="col-md-12 mb-3">
+            <label for="Title">
+                Notes
+            </label>
+            <InputText id="Title" @bind-Value="gender.Notes" class="form-control" />
+            <ValidationMessage For="@(()=> gender.Notes)" />
+        </div>
+
+         <div class="col-md-12 mb-3">
+            <button class="btn btn-success" type="submit">save</button>
+            <button class="btn btn-danger" @onclick="OnAbort">cancel</button>
+         </div>
+    </EditForm>
+}
+
+@code {
+
+    [Parameter]
+    public int? id { get; set; }
+
+    private string title = "";
+    private GenderDetail? gender;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (id == null)
+        {
+            title = "Create";
+            gender = new();
+        }
+        else
+        {
+            title = "Edit";
+            gender = await uow.GenderService.GetGender((int)id);
+        }
+    }
+
+    private void Onsave()
+    {
+        if (gender != null)
+        {
+            if (id == null)
+            {
+                uow.GenderService.Add(gender);
+            }
+            else
+            {
+                uow.GenderService.Update(gender);
+            }
+            uow.Commit();
+        }
+    }
+
+    private void OnAbort()
+    {
+        
+    }
+}

@@ -15,7 +15,7 @@ namespace ApecShop.Services
 
         public GenderService GenderService => _genderService ??= new GenderService(dbc);
 
-        private async Task<int> Commit() { 
+        public async Task<int> Commit() { 
             return await dbc.SaveChangesAsync();  
         }
 
